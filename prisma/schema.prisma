@@ -12,3 +12,27 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id                Int       @id @default(autoincrement())
+  name              String
+  email             String    @unique
+  password          String
+  role              Role      @default(STUDENT)
+  mobileNumber      String?    @unique
+  hostelBlock       String?
+  image             String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  emailVerified     Boolean   @default(false)
+  verificationToken String?   // Token for email verification
+  resetToken        String?   // Token for password reset
+  mfaEnabled        Boolean   @default(false) // Multi-factor authentication enabled
+  mfaSecret         String?   // Secret key for multi-factor authentication
+}
+
+enum Role {
+  STUDENT
+  WARDEN
+  SECURITY_GUARD
+}
