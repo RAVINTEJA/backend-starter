@@ -1,10 +1,6 @@
 import { Request, Response } from "express";
 import { userServices } from "../services/user.services";
 
-async function createUser(req: Request, res: Response) {
-    const user = await userServices.createUser(req.body);
-    res.json(user);
-}
 
 async function getUserById(req: Request, res: Response) {
     const user = await userServices.getUserById(Number(req.params.id));
@@ -34,7 +30,6 @@ async function getUsersByRole(req: Request, res: Response) {
 }
 
 export const userController = {
-    createUser,
     getUserById,
     updateUser,
     deleteUser,
