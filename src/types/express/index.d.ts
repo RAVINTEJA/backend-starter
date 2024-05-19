@@ -6,6 +6,10 @@ declare module 'express' {
     body: {
       email: string;
       password: string;
+      name: string;
+      mobileNumber: string;
+      hostelBlock: string;
+      image: string;
     };
   }
 }
